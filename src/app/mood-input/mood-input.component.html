@@ -19,11 +19,14 @@
       AI Vibe Coach
     </h1>
 
-    <textarea [(ngModel)]="moodText" placeholder="How are you feeling today?"
-      class="w-full resize-none rounded-2xl border-2 border-white/40 px-5 py-4 text-lg text-white placeholder:text-white/70 bg-transparent focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-300 transition-all duration-300">
-    </textarea>
+   <textarea [(ngModel)]="moodText" placeholder="How are you feeling today?"
+      class="w-full resize-none rounded-2xl border-2 border-white/40 px-5 py-4 text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#1e1e2f] via-[#3b3b4f] to-[#2b2b3f] placeholder:text-transparent placeholder:bg-clip-text placeholder:bg-gradient-to-r placeholder:from-[#1e1e2f] placeholder:via-[#3b3b4f] placeholder:to-[#2b2b3f] focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-300 transition-all duration-300">
+   </textarea>
 
-    <p class="text-white font-medium text-center">Select your mood</p>
+
+    <p class="font-medium text-center text-transparent bg-clip-text bg-gradient-to-r from-[#1e1e2f] via-[#3b3b4f] to-[#2b2b3f]">
+      Select your mood
+    </p>
 
     <div class="flex justify-center gap-6 mt-2 relative">
       <ng-container *ngFor="let e of emojiList">

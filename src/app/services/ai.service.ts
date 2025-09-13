@@ -8,7 +8,7 @@ import { AnimationItem } from 'lottie-web';
   providedIn: 'root'
 })
 export class AiService {
-  private apiKey = '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'; // <-- put your key
+  private apiKey = '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'
   private apiUrl = 'https://api.openai.com/v1/chat/completions';
 
   constructor(private http: HttpClient) {}
