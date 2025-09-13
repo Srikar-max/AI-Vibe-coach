@@ -1,0 +1,113 @@
+<div
+  class="relative min-h-screen w-full overflow-hidden flex flex-col items-center text-gray-900 dark:text-white"
+  [ngClass]="
+    !mood 
+      ? 'bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155]' 
+      : mood === 'sad' 
+        ? 'bg-gradient-to-br from-[#1e293b] via-[#475569] to-[#38bdf8]' 
+        : mood === 'happy' 
+          ? 'bg-gradient-to-br from-white via-[#fdf2f8] to-[#fde2e4]' 
+          : 'bg-gradient-to-br from-[#a855f7] via-[#ec4899] to-[#06b6d4]'
+  "
+>
+  <div class="absolute inset-0 pointer-events-none opacity-30 mix-blend-screen">
+    <ng-lottie
+      class="w-full h-full"
+      [options]="{
+        path: mood === 'sad' ? 'assets/Lottie.json' : 'assets/Sparkles.json',
+        loop: true,
+        autoplay: true
+      }"
+    ></ng-lottie>
+  </div>
+
+  <header class="relative z-10 w-full max-w-7xl px-6 pt-8">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-2xl bg-white/20 backdrop-blur shadow-lg flex items-center justify-center">
+          <span class="text-xl">✨</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">AI Vibe Coach</h1>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative z-10 w-full max-w-7xl px-6 pt-8 pb-4 text-gray-900 dark:text-white">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+      <div>
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-md">
+          You’re feeling
+          <span class="bg-gradient-to-br from-yellow-600 to to-yellow-800 font-semibold   rounded-lg">
+            {{ mood || 'something' }}
+          </span>
+        </h2>
+        <p class="mt-4 text-lg max-w-prose">
+          A curated set of uplifting content to match your vibe — a spark of motivation, a perfect track, and a fun activity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative z-10 w-full max-w-7xl px-6 pb-14 text-gray-900 dark:text-white">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <article class="group bg-white/15 backdrop-blur-xl rounded-3xl p-6 shadow-xl ring-1 ring-white/20 hover:bg-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold">Motivational Quote</h3>
+          <span class="text-2xl">💡</span>
+        </div>
+        <p class="italic leading-relaxed">“{{ quote }}”</p>
+      </article>
+
+      <article class="group bg-white/15 backdrop-blur-xl rounded-3xl p-6 shadow-xl ring-1 ring-white/20 hover:bg-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold">Song Suggestion</h3>
+          <span class="text-2xl">🎵</span>
+        </div>
+        <p class="mb-5 font-medium">{{ song }}</p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            [href]="getYouTubeLink(song)"
+            target="_blank"
+            class="p-3 rounded-full bg-red-500/90 hover:bg-red-600 shadow hover:shadow-lg hover:-translate-y-0.5 transition flex items-center justify-center"
+            title="Watch on YouTube"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.6 3H4.4C3.07 3 2 4.07 2 5.4v13.2C2 19.93 3.07 21 4.4 21h15.2c1.33 0 2.4-1.07 2.4-2.4V5.4C22 4.07 20.93 3 19.6 3zM10 15.5v-7l6 3.5-6 3.5z"/>
+            </svg>
+          </a>
+          <a
+            [href]="getSpotifyLink(song)"
+            target="_blank"
+            class="p-3 rounded-full bg-green-500/90 hover:bg-green-600 shadow hover:shadow-lg hover:-translate-y-0.5 transition flex items-center justify-center"
+            title="Listen on Spotify"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.373 0 12c0 6.628 5.37 12 12 12s12-5.372 12-12C24 5.373 18.63 0 12 0zm5.484 17.338a.75.75 0 0 1-1.037.273c-2.847-1.74-6.43-2.134-10.64-1.172a.75.75 0 0 1-.338-1.46c4.58-1.06 8.56-.604 11.752 1.352a.75.75 0 0 1 .263 1.007zm1.473-3.233a.9.9 0 0 1-1.243.326c-3.254-1.976-8.217-2.55-12.07-1.401a.9.9 0 0 1-.525-1.718c4.293-1.313 9.768-.664 13.49 1.596a.9.9 0 0 1 .348 1.197zm.276-3.413C15.504 7.92 8.816 7.636 4.968 8.803a1.05 1.05 0 1 1-.6-2.015c4.324-1.287 11.676-1.01 15.9 1.602a1.05 1.05 0 1 1-1.035 1.794z"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="group bg-white/15 backdrop-blur-xl rounded-3xl p-6 shadow-xl ring-1 ring-white/20 hover:bg-white/20 transition">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold">Activity / Movie</h3>
+          <span class="text-2xl">🎬</span>
+        </div>
+        <p class="mb-2">{{ action }}</p>
+        <p class="font-medium">{{ movie }}</p>
+        <div class="mt-5">
+          <a
+            [href]="getMovieLink(movie)"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/90 text-sm font-semibold shadow hover:shadow-lg hover:-translate-y-0.5 transition"
+          >
+            <span>View details</span>
+            <span>➡️</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-40 bg-white/20 blur-3xl opacity-30"></div>
+</div>

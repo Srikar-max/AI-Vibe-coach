@@ -1,0 +1,32 @@
+.vibrant-text {
+  background-image: linear-gradient(90deg, #ffffff, #e0e8ff, #ffe5f5, #fffacd);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s infinite linear;
+}
+
+.vibrant-button {
+  background-image: linear-gradient(90deg, #ffffff, #e0e8ff, #ffe5f5, #fffacd);
+  background-size: 300% 300%;
+  color: #1a1a1a;
+  transition: background-position 0.4s ease, transform 0.3s ease;
+}
+
+.vibrant-button:hover {
+  background-position: right center;
+  transform: scale(1.05);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
